@@ -1,0 +1,20 @@
+{
+  "common": {
+    "username": "Username",
+    "password": "Password"
+  },
+  "button": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "back": "Back",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "sidebar": {
+    "home": "Home"
+  },
+  "home": {
+    "title": "Home"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "common": {
+    "username": "Tài khoản",
+    "password": "Mật khẩu"
+  },
+  "button": {
+    "ok": "OK",
+    "cancel": "Hủy",
+    "back": "Quay lại",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất"
+  },
+  "sidebar": {
+    "home":"Trang chủ"
+  },
+  "home": {
+    "title": "Trang chủ"
+  }
+}
