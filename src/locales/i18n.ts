@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import en from './en/translation.json';
 import vi from './vi/translation.json';
 import { convertLanguageJsonToObject } from './translations';
+import { LocalStorageService } from '../app/services';
 
 export const translationsJson = {
   en: {
@@ -18,7 +19,8 @@ convertLanguageJsonToObject(en);
 
 i18next.use(initReactI18next).init({
   resources: translationsJson,
-  fallbackLng: 'en',
+  fallbackLng:
+    LocalStorageService.get<string>(LocalStorageService.LANGUAGE) || 'en',
   debug:
     process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test',
   interpolation: {

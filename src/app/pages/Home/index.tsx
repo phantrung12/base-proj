@@ -1,10 +1,12 @@
-import { Layout, Menu } from 'antd';
+import { Button, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  UserAddOutlined,
+  FormOutlined,
 } from '@ant-design/icons';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import Header from '../../components/Header';
@@ -15,6 +17,7 @@ import { translations } from '../../../locales/translations';
 const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const { Sider, Content } = Layout;
 
@@ -23,16 +26,38 @@ const Home = () => {
       key: path.home,
       icon: <UserOutlined />,
       label: t(translations.home.title),
+      onClick: () => navigate(path.home),
     },
     {
-      key: '2',
-      icon: <VideoCameraOutlined />,
-      label: 'nav 2',
+      key: path.path1,
+      icon: <FormOutlined />,
+      label: 'Path 1',
+      children: [
+        {
+          key: path.subPath1.itemSubPath1,
+          icon: <VideoCameraOutlined />,
+          label: 'sub paht 1',
+          onClick: () => navigate(path.subPath1.itemSubPath1),
+        },
+        {
+          key: path.subPath1.itemSubPath2,
+          icon: <VideoCameraOutlined />,
+          label: 'sub paht 2',
+          onClick: () => navigate(path.subPath1.itemSubPath2),
+        },
+      ],
     },
     {
-      key: '3',
+      key: path.path2,
       icon: <UploadOutlined />,
-      label: 'nav 3',
+      label: 'Path 2',
+      onClick: () => navigate(path.path2),
+    },
+    {
+      key: path.path3,
+      icon: <UploadOutlined />,
+      label: 'Path 3',
+      onClick: () => navigate(path.path3),
     },
   ];
 
@@ -46,17 +71,24 @@ const Home = () => {
       >
         <div className="logo">Logo</div>
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
           defaultSelectedKeys={[path.home]}
           items={sidebarItems}
         />
       </Sider>
       <Layout className="site-layout">
-        <Header />
-        <Content className="site-layout-background content">
+        <Header
+          onClickOpenSidebar={() => setCollapsed(!collapsed)}
+          collapse={collapsed}
+        />
+        <Content
+          className={`site-layout-background content ${
+            collapsed ? 'close-content' : 'open-content'
+          }`}
+        >
           <div>
-            Content
+            <Button type="primary">Button</Button>
             <Outlet />
           </div>
         </Content>

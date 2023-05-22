@@ -27,7 +27,12 @@ const countries = [
   { code: 'English', label: EnFlag, id: 'en' },
 ];
 
-const Header = () => {
+interface Props {
+  onClickOpenSidebar?: () => void;
+  collapse?: boolean;
+}
+
+const Header = ({ onClickOpenSidebar, collapse }: Props) => {
   const [openLanguage, setOpenLanguage] = useState(false);
   const dispatch = useAppDispatch();
   // const selectedLanguage = countries.find(item => item.id === LocalStorageService.get(LocalStorageService.LANGUAGE));
@@ -78,10 +83,18 @@ const Header = () => {
     </Space>
   );
 
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpenLanguage(newOpen);
+  };
+
   return (
-    <Header className="site-layout-background header">
+    <Header
+      className={`site-layout-background header ${
+        collapse ? 'close-header' : 'open-header'
+      }`}
+    >
       <Space className="justify-between w-100">
-        <MenuUnfoldOutlined className="icon" />
+        <MenuUnfoldOutlined className="icon" onClick={onClickOpenSidebar} />
         <Space
           className=""
           size={'middle'}
@@ -103,6 +116,7 @@ const Header = () => {
               placement="bottom"
               content={contentLanguage}
               open={openLanguage}
+              onOpenChange={handleOpenChange}
             >
               <img
                 src={VnFlag}

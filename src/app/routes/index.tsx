@@ -13,7 +13,13 @@ export default function Routes() {
           <Home />
         </PrivateRoute>
       ),
-      children: [{ path: path.contact, element: <Login /> }],
+      children: [
+        { path: path.path1, element: <>Path 1</> },
+        { path: path.path2, element: <>Path 2</> },
+        { path: path.path3, element: <>Path 3</> },
+        { path: path.subPath1.itemSubPath1, element: <>Sub Path 1</> },
+        { path: path.subPath1.itemSubPath2, element: <>Sub Path 2</> },
+      ],
     },
     {
       path: path.login,
