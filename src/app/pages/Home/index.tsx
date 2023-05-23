@@ -1,6 +1,6 @@
-import { Button, Layout, Menu } from 'antd';
+import { Alert, Button, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router';
+import { Outlet, useNavigate } from 'react-router-dom';
 import {
   UploadOutlined,
   UserOutlined,
@@ -31,19 +31,19 @@ const Home = () => {
     {
       key: path.path1,
       icon: <FormOutlined />,
-      label: 'Path 1',
+      label: 'UI Kits',
       children: [
         {
-          key: path.subPath1.itemSubPath1,
+          key: path.subPath1.alert,
           icon: <VideoCameraOutlined />,
-          label: 'sub paht 1',
-          onClick: () => navigate(path.subPath1.itemSubPath1),
+          label: 'Alert',
+          onClick: () => navigate(path.subPath1.alert),
         },
         {
-          key: path.subPath1.itemSubPath2,
+          key: path.subPath1.button,
           icon: <VideoCameraOutlined />,
-          label: 'sub paht 2',
-          onClick: () => navigate(path.subPath1.itemSubPath2),
+          label: 'Button',
+          onClick: () => navigate(path.subPath1.button),
         },
       ],
     },
@@ -88,7 +88,6 @@ const Home = () => {
           }`}
         >
           <div>
-            <Button type="primary">Button</Button>
             <Outlet />
           </div>
         </Content>
