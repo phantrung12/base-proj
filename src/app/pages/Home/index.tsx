@@ -54,6 +54,12 @@ const Home = () => {
           label: 'Notification',
           onClick: () => navigate(path.subPath1.notification),
         },
+        {
+          key: path.subPath1.modal,
+          icon: <NotificationOutlined />,
+          label: 'Modal',
+          onClick: () => navigate(path.subPath1.modal),
+        },
       ],
     },
     {

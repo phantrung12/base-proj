@@ -7,6 +7,7 @@ export const path = {
     button: '/button',
     alert: '/alert',
     notification: '/notification',
+    modal: '/modal',
   },
   form: '/form',
   createForm: '/form/create',

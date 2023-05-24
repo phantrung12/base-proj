@@ -11,6 +11,7 @@ import Form from '../pages/Form';
 import CreateForm from '../pages/Form/containers/Create';
 import UpdateForm from '../pages/Form/containers/Update';
 import DetailForm from '../pages/Form/containers/Detail';
+import ModalDemo from '../pages/Modal';
 
 // export default function Routes() {
 //   return useRoutes([
@@ -58,6 +59,10 @@ const AppRoutes = () => {
           <Route
             path={path.subPath1.notification}
             element={<NotificationDemo />}
+          />
+          <Route
+            path={path.subPath1.modal}
+            element={<ModalDemo />}
           />
         </Route>
         <Route path={path.form} element={<Form />} />
