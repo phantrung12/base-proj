@@ -69,6 +69,7 @@ const AppRoutes = () => {
         <Route path={path.path2} element={<>Path 2</>} />
         <Route path={path.path3} element={<>Path 3</>} />
       </Route>
+      <Route path={path.login} element={<Login />} />
     </Routes>
   );
 };

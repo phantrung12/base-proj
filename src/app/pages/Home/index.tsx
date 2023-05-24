@@ -16,6 +16,10 @@ import { path } from '../../routes/path';
 import { useTranslation } from 'react-i18next';
 import { translations } from '../../../locales/translations';
 
+type MenuItemType = ItemType & {
+  isActive?: boolean;
+};
+
 const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { t } = useTranslation();
@@ -24,7 +28,7 @@ const Home = () => {
 
   const { Sider, Content } = Layout;
 
-  const sidebarItems: ItemType[] = [
+  const sidebarItems: MenuItemType[] = [
     {
       key: path.home,
       icon: <UserOutlined />,
