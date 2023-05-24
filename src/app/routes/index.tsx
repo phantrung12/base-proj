@@ -13,65 +13,75 @@ import UpdateForm from '../pages/Form/containers/Update';
 import DetailForm from '../pages/Form/containers/Detail';
 import ModalDemo from '../pages/Modal';
 
-// export default function Routes() {
-//   return useRoutes([
-//     {
-//       path: path.home,
-//       element: (
-//         <PrivateRoute>
-//           <Home />
-//         </PrivateRoute>
-//       ),
-//       children: [
-//         { path: path.path1, element: <UIKit /> },
-//         { path: path.path2, element: <>Path 2</> },
-//         { path: path.path3, element: <>Path 3</> },
-//         { path: path.subPath1.alert, element: <AlertDemo /> },
-//         { path: path.subPath1.button, element: <ButtonDemo /> },
-//       ],
-//     },
-//     {
-//       path: path.login,
-//       element: <Login />,
-//     },
-//     { path: path.all, element: <Navigate to={path.home} /> },
-//   ]);
-// }
+export default function AppRoutes() {
+  return useRoutes([
+    {
+      path: path.home,
+      element: (
+        <PrivateRoute>
+          <Home />
+        </PrivateRoute>
+      ),
+      children: [
+        {
+          element: <UIKit />,
+          children: [
+            { path: path.subPath1.alert, element: <AlertDemo /> },
+            { path: path.subPath1.button, element: <ButtonDemo /> },
+            { path: path.subPath1.notification, element: <NotificationDemo /> },
+            { path: path.subPath1.modal, element: <ModalDemo /> },
+          ],
+        },
+        { path: path.form, element: <Form /> },
+        { path: path.createForm, element: <CreateForm /> },
+        { path: path.updateForm, element: <UpdateForm /> },
+        { path: path.detailForm, element: <DetailForm /> },
+        { path: path.path2, element: <>Path 2</> },
+        { path: path.path3, element: <>Path 3</> },
+      ],
+    },
+    {
+      path: path.login,
+      element: <Login />,
+    },
+    { path: path.all, element: <Navigate to={path.home} /> },
+  ]);
+}
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route
-        path={path.home}
-        element={
-          <PrivateRoute>
-            <Home />
-          </PrivateRoute>
-        }
-      >
-        <Route element={<UIKit />}>
-          <Route
-            path={path.all}
-            element={<Navigate to={path.subPath1.button} replace />}
-          />
-          <Route path={path.subPath1.button} element={<ButtonDemo />} />
-          <Route path={path.subPath1.alert} element={<AlertDemo />} />
-          <Route
-            path={path.subPath1.notification}
-            element={<NotificationDemo />}
-          />
-          <Route path={path.subPath1.modal} element={<ModalDemo />} />
-        </Route>
-        <Route path={path.form} element={<Form />} />
-        <Route path={path.createForm} element={<CreateForm />} />
-        <Route path={path.updateForm} element={<UpdateForm />} />
-        <Route path={path.detailForm} element={<DetailForm />} />
-        <Route path={path.path2} element={<>Path 2</>} />
-        <Route path={path.path3} element={<>Path 3</>} />
-      </Route>
-      <Route path={path.login} element={<Login />} />
-    </Routes>
-  );
-};
+// const AppRoutes = () => {
+//   return (
+//     <Routes>
+//       <Route
+//         path={path.home}
+//         element={
+//           <PrivateRoute>
+//             <Home />
+//           </PrivateRoute>
+//         }
+//       >
+//         <Route element={<UIKit />}>
+//           <Route
+//             path={path.all}
+//             element={<Navigate to={path.subPath1.button} replace />}
+//           />
+//           <Route path={path.subPath1.button} element={<ButtonDemo />} />
+//           <Route path={path.subPath1.alert} element={<AlertDemo />} />
+//           <Route
+//             path={path.subPath1.notification}
+//             element={<NotificationDemo />}
+//           />
+//           <Route path={path.subPath1.modal} element={<ModalDemo />} />
+//         </Route>
+//         <Route path={path.form} element={<Form />} />
+//         <Route path={path.createForm} element={<CreateForm />} />
+//         <Route path={path.updateForm} element={<UpdateForm />} />
+//         <Route path={path.detailForm} element={<DetailForm />} />
+//         <Route path={path.path2} element={<>Path 2</>} />
+//         <Route path={path.path3} element={<>Path 3</>} />
+//       </Route>
+//       <Route path={path.login} element={<Login />} />
+//     </Routes>
+//   );
+// };
 
-export default AppRoutes;
+// export default AppRoutes;

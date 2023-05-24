@@ -20,7 +20,7 @@ import { path } from '../../routes/path';
 import VnFlag from '../../../imgs/vn.svg';
 import EnFlag from '../../../imgs/gb-eng.svg';
 import { LocalStorageService } from '../../services';
-import i18next, { translationsJson } from '../../../locales/i18n';
+import i18next from '../../../locales/i18n';
 
 const countries = [
   { code: 'Vietnamese', label: VnFlag, id: 'vi' },
@@ -35,9 +35,6 @@ interface Props {
 const Header = ({ onClickOpenSidebar, collapse }: Props) => {
   const [openLanguage, setOpenLanguage] = useState(false);
   const dispatch = useAppDispatch();
-  // const selectedLanguage = countries.find(item => item.id === LocalStorageService.get(LocalStorageService.LANGUAGE));
-
-  // console.log(selectedLanguage);
 
   const { Header } = Layout;
 
@@ -119,7 +116,15 @@ const Header = ({ onClickOpenSidebar, collapse }: Props) => {
               onOpenChange={handleOpenChange}
             >
               <img
-                src={VnFlag}
+                src={
+                  countries.find(
+                    item =>
+                      item.id ===
+                      LocalStorageService.get<string>(
+                        LocalStorageService.LANGUAGE,
+                      ),
+                  )?.label || EnFlag
+                }
                 width={32}
                 height={32}
                 className="flag"

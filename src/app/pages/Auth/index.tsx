@@ -25,14 +25,14 @@ const Login = () => {
 
   const dispatch = useAppDispatch();
 
-  const onSubmit = (data: ILogin) => {
+  const onLoginSubmit = (data: ILogin) => {
     dispatch(login(data)).then(
       res => res.meta.requestStatus === 'fulfilled' && navigate(path.home),
     );
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit(onLoginSubmit)}>
       <Row className="login-form vh-100">
         <Col span={18} className="center-element">
           <Space
@@ -78,14 +78,14 @@ const Login = () => {
               type="primary"
               htmlType="submit"
               className="login-form-button w-100"
-              onClick={handleSubmit(onSubmit)}
+              onClick={handleSubmit(onLoginSubmit)}
             >
               {t(translations.button.login)}
             </Button>
           </Space>
         </Col>
       </Row>
-    </div>
+    </form>
   );
 };
 

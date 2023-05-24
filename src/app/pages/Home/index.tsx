@@ -86,8 +86,18 @@ const Home = () => {
     },
   ];
 
-  const returnOpenKeys = (items: ItemType[]) => {
-    return [];
+  const returnOpenKeys = (itemsMenu: any[]) => {
+    const openKeys: any[] = [];
+    itemsMenu.map(item => {
+      if (item?.children) {
+        if (item?.children.find((itm: any) => itm.key === location.pathname)) {
+          openKeys.push(item?.key);
+        } else {
+          returnOpenKeys(item?.children);
+        }
+      }
+    });
+    return openKeys;
   };
 
   return (
@@ -104,7 +114,7 @@ const Home = () => {
           mode="inline"
           defaultSelectedKeys={[path.home]}
           selectedKeys={[location.pathname]}
-          // openKeys={[path.path1, location.pathname]}
+          defaultOpenKeys={returnOpenKeys(sidebarItems)}
           items={sidebarItems}
         />
       </Sider>
