@@ -60,10 +60,7 @@ const AppRoutes = () => {
             path={path.subPath1.notification}
             element={<NotificationDemo />}
           />
-          <Route
-            path={path.subPath1.modal}
-            element={<ModalDemo />}
-          />
+          <Route path={path.subPath1.modal} element={<ModalDemo />} />
         </Route>
         <Route path={path.form} element={<Form />} />
         <Route path={path.createForm} element={<CreateForm />} />
