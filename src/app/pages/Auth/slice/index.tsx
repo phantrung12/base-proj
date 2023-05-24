@@ -3,6 +3,7 @@ import {
   createAsyncThunk,
   isFulfilled,
   isRejected,
+  isPending,
 } from '@reduxjs/toolkit';
 import { AuthState } from './type';
 import { IAuth, ILogin } from '../../../../types';
@@ -11,7 +12,9 @@ import { AppThunk } from '../../../../store/configureStore';
 import { notification } from '../../../../utils/helper/notifications';
 import { get } from 'lodash';
 
-export const initialState: AuthState = {};
+export const initialState: AuthState = {
+  loading: false,
+};
 
 export const login = createAsyncThunk('login', async (data: ILogin) => {
   const res = await AuthService.login(data);
@@ -45,8 +48,13 @@ const authSlice = createSlice({
             response.refreshToken.token,
           );
         }
+        state.loading = false;
+      })
+      .addMatcher(isPending(login), (state, action) => {
+        state.loading = true;
       })
       .addMatcher(isRejected(login), (state, action) => {
+        state.loading = false;
         notification.error({
           description: get(action.payload, 'message') || '',
         });

@@ -24,6 +24,7 @@ const Login = () => {
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
+  const { loading } = useAppSelector(authSelector);
 
   const onLoginSubmit = (data: ILogin) => {
     dispatch(login(data)).then(
@@ -79,6 +80,7 @@ const Login = () => {
               htmlType="submit"
               className="login-form-button w-100"
               onClick={handleSubmit(onLoginSubmit)}
+              loading={loading}
             >
               {t(translations.button.login)}
             </Button>
