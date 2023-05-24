@@ -1,12 +1,14 @@
 import { Alert, Button, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
   UserAddOutlined,
   FormOutlined,
+  NotificationOutlined,
+  AlertOutlined,
 } from '@ant-design/icons';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import Header from '../../components/Header';
@@ -18,6 +20,7 @@ const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { Sider, Content } = Layout;
 
@@ -35,7 +38,7 @@ const Home = () => {
       children: [
         {
           key: path.subPath1.alert,
-          icon: <VideoCameraOutlined />,
+          icon: <AlertOutlined />,
           label: 'Alert',
           onClick: () => navigate(path.subPath1.alert),
         },
@@ -45,7 +48,19 @@ const Home = () => {
           label: 'Button',
           onClick: () => navigate(path.subPath1.button),
         },
+        {
+          key: path.subPath1.notification,
+          icon: <NotificationOutlined />,
+          label: 'Notification',
+          onClick: () => navigate(path.subPath1.notification),
+        },
       ],
+    },
+    {
+      key: path.form,
+      icon: <FormOutlined />,
+      label: t(translations.form.title),
+      onClick: () => navigate(path.form),
     },
     {
       key: path.path2,
@@ -61,6 +76,10 @@ const Home = () => {
     },
   ];
 
+  const returnOpenKeys = (items: ItemType[]) => {
+    return [];
+  };
+
   return (
     <Layout className="layout">
       <Sider
@@ -74,6 +93,8 @@ const Home = () => {
           theme="light"
           mode="inline"
           defaultSelectedKeys={[path.home]}
+          selectedKeys={[location.pathname]}
+          // openKeys={[path.path1, location.pathname]}
           items={sidebarItems}
         />
       </Sider>

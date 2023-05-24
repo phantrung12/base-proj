@@ -6,6 +6,7 @@
   "button": {
     "ok": "OK",
     "cancel": "Cancel",
+    "submit": "Submit",
     "back": "Back",
     "login": "Login",
     "register": "Register",
@@ -16,5 +17,11 @@
   },
   "home": {
     "title": "Home"
+  },
+  "form": {
+    "title":"Form",
+    "addNew": "Add new",
+    "update": "Update",
+    "delete": "Delete"
   }
 }

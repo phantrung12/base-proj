@@ -10,28 +10,28 @@ export const notification = {
     antdNotification.error({
       message: message ? message : 'Error',
       description,
-      duration: 2,
+      className: 'notification notification-error',
     });
   },
   warning: ({ message, description }: NotificationProps) => {
     antdNotification.warning({
       message: message ? message : 'Warning',
       description,
-      className: 'notification',
+      className: 'notification notification-warning',
     });
   },
   success: ({ message, description }: NotificationProps) => {
     antdNotification.success({
       message: message ? message : 'Success',
       description,
-      className: 'notification',
+      className: 'notification notification-success',
     });
   },
   info: ({ message, description }: NotificationProps) => {
     antdNotification.info({
       message: message ? message : 'Info',
       description,
-      className: 'notification',
+      className: 'notification notification-info',
     });
   },
 };

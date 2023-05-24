@@ -6,6 +6,7 @@
   "button": {
     "ok": "OK",
     "cancel": "Hủy",
+    "submit": "Gửi",
     "back": "Quay lại",
     "login": "Đăng nhập",
     "register": "Đăng ký",
@@ -16,5 +17,11 @@
   },
   "home": {
     "title": "Trang chủ"
+  },
+  "form": {
+    "title":"Form",
+    "addNew": "Thêm mới",
+    "update": "Cập nhật",
+    "delete": "Xóa"
   }
 }
