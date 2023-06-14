@@ -75,6 +75,7 @@ module.exports = (env, argv) => {
         serveIndex: true,
         watch: true,
       },
+      open: true,
     },
     plugins: [
       new MiniCssExtractPlugin({

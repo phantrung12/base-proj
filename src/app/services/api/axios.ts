@@ -80,5 +80,13 @@ export const createServiceNoToken = (baseURL?: string): AxiosInstance => {
   instance.interceptors.request.use(config => {
     return config;
   });
+  instance.interceptors.response.use(
+    response => {
+      return response;
+    },
+    error => {
+      return Promise.reject(error);
+    },
+  );
   return instance;
 };

@@ -12,8 +12,8 @@ const Form = () => {
   return (
     <div>
       <Title level={3}>{t(translations.form.title)}</Title>
-      <Space className="w-100 justify-end">
-        <Button onClick={() => navigate(path.createForm)}>
+      <Space className="w-100 justify-start">
+        <Button onClick={() => navigate(path.createForm)} type="primary">
           {t(translations.form.addNew)}
         </Button>
       </Space>

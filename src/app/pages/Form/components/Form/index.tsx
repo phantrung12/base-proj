@@ -6,6 +6,7 @@ import AntdInput from '../../../../components/Input';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
+import UploadFile from '../../../../components/UploadFile';
 
 const FormComponent = () => {
   const {
@@ -149,6 +150,18 @@ const FormComponent = () => {
                     title: 'Heading 2',
                     class: 'ck-heading_heading2',
                   },
+                  {
+                    model: 'heading3',
+                    view: 'h3',
+                    title: 'Heading 3',
+                    class: 'ck-heading_heading3',
+                  },
+                  {
+                    model: 'heading4',
+                    view: 'h4',
+                    title: 'Heading 4',
+                    class: 'ck-heading_heading4',
+                  },
                 ],
               },
             }}
@@ -156,6 +169,11 @@ const FormComponent = () => {
               const data = editor.getData();
             }}
           />
+        </FormItem>
+      </Col>
+      <Col span={24}>
+        <FormItem title={'Editor'} required>
+          <UploadFile type="image" />
         </FormItem>
       </Col>
     </Row>
