@@ -56,7 +56,7 @@ const authSlice = createSlice({
       .addMatcher(isRejected(login), (state, action) => {
         state.loading = false;
         notification.error({
-          description: get(action.payload, 'message') || '',
+          description: get(action.error, 'message') || '',
         });
       });
   },

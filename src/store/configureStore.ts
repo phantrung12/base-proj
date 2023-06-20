@@ -1,10 +1,22 @@
 import { createReducer } from './reducer';
 import { AnyAction, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
+import errorMiddleware from '../config/error-middleware';
 
 const store = configureStore({
   reducer: createReducer(),
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Ignore these field paths in all actions
+        ignoredActionPaths: [
+          'payload.config',
+          'payload.request',
+          'error',
+          'meta.arg',
+        ],
+      },
+    }).concat(errorMiddleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 
